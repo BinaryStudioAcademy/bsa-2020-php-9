@@ -3,15 +3,15 @@ services:
   app:
     image: lenchv/bsa-php:0.0.2
     environment:
-      XDEBUG_CONFIG: "remote_host=172.17.0.1 remote_port=9000 remote_log=/app/xdebug.log"
+      XDEBUG_CONFIG: "remote_host=172.17.0.1 remote_port=9001 remote_log=/app/xdebug.log"
     volumes:
       - ./:/app
     working_dir: /app
-    ports:
-      - 9000:9000
-    command: php artisan serve --host=0.0.0.0 --port=8000
-    ports:
-      - 8000:8000
+  composer:
+    image: composer:latest
+    volumes:
+        - ./:/app
+        - ./.composer:/composer
   db:
     image: mariadb:latest
     env_file:

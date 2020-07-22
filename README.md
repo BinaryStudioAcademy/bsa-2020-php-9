@@ -125,9 +125,10 @@ API должно соответствовать следуюшим требов�
 ```bash
 cp .env.example .env
 
+docker-compose run --rm composer install
+
 docker-compose up -d
 
-docker-compose exec app composer install
 docker-compose exec app php artisan key:generate
 docker-compose exec app php artisan migrate
 
